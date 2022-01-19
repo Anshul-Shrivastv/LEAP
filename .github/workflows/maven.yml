@@ -39,6 +39,11 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
+      - name: Run other test cases
+        run: mvn test -Dtest=WelcomeControllerTest
+      - name: Publish Test Report
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
   deploy:
     name: Deploy
     needs: [build,run_tests]
