@@ -40,7 +40,7 @@ jobs:
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
       - name: Run other test cases
-        run: mvn test -Dtest=WelcomeControllerTest
+        run: mvn surefire:test
       - name: Publish Test Report
         if: ${{ always() }}
         uses: scacap/action-surefire-report@v1
